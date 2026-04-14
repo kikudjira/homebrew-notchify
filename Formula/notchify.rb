@@ -1,9 +1,9 @@
 class Notchify < Formula
   desc "Pixel mascot for Claude Code that lives in your MacBook notch"
   homepage "https://github.com/kikudjira/notchify"
-  url "https://github.com/kikudjira/notchify/releases/download/v1.0.13/Notchify-v1.0.13.zip"
-  sha256 "24996e8197faf5873ac058294ba0133cbea61b256216dc7b71bc3d0639d5324c"
-  version "1.0.13"
+  url "https://github.com/kikudjira/notchify/releases/download/v1.0.14/Notchify-v1.0.14.zip"
+  sha256 "4a78cce6c9ba3517de63847307f6e7da3c16536593f563a82a228b8a6f9d384d"
+  version "1.0.14"
 
   depends_on :macos => :monterey
 
