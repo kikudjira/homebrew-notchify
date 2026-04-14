@@ -1,9 +1,9 @@
 class Notchify < Formula
   desc "Pixel mascot for Claude Code that lives in your MacBook notch"
   homepage "https://github.com/kikudjira/notchify"
-  url "https://github.com/kikudjira/notchify/releases/download/v1.0.20/Notchify-v1.0.20.zip"
-  sha256 "8574254850836e4d9537d5f5421102c9ffd26e4aa87dab45213d2d8efda7cec8"
-  version "1.0.20"
+  url "https://github.com/kikudjira/notchify/releases/download/v1.0.21/Notchify-v1.0.21.zip"
+  sha256 "0f2e43e533569088139c3b8792bc5f0fb7b84b3bccc845550ee86b3e3330de28"
+  version "1.0.21"
 
   depends_on :macos => :monterey
 
@@ -23,10 +23,13 @@ class Notchify < Formula
 
   def caveats
     <<~EOS
-      Launch the app:
+      Launch the app (also enables hooks and startup animation automatically):
         notchify launch
 
-      Then configure hooks, sounds, startup animation and login item:
+      Then reload your shell so the startup animation takes effect:
+        source ~/.zshrc
+
+      To adjust sounds, login item, or display:
         notchify config
     EOS
   end
