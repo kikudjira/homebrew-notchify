@@ -5,11 +5,20 @@ class Notchify < Formula
   sha256 "73abc6819e00ed4c6088edf6d2fe7e5cb3e341df5ce4c2af3ced65596a3aa843"
   version "1.0.21"
 
+  head "https://github.com/kikudjira/notchify.git", branch: "main"
+
   depends_on :macos => :monterey
+  depends_on xcode: ["14.0", :build] if build.head?
 
   def install
-    prefix.install "Notchify.app"
-    bin.install_symlink "#{prefix}/Notchify.app/Contents/MacOS/notchify-cli" => "notchify"
+    if build.head?
+      system "./scripts/build.sh"
+      prefix.install "Notchify.app"
+      bin.install_symlink "#{prefix}/Notchify.app/Contents/MacOS/notchify-cli" => "notchify"
+    else
+      prefix.install "Notchify.app"
+      bin.install_symlink "#{prefix}/Notchify.app/Contents/MacOS/notchify-cli" => "notchify"
+    end
   end
 
   def post_install
