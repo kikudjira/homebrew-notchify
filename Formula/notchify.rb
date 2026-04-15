@@ -10,8 +10,12 @@ class Notchify < Formula
   depends_on :macos => :monterey
   depends_on xcode: ["14.0", :build] if build.head?
 
+  # Swift Package Manager sandbox conflicts with Homebrew sandbox
+  sandbox false if build.head?
+
   def install
     if build.head?
+      ENV["SWIFT_BUILD_FLAGS"] = "--disable-sandbox"
       system "./scripts/build.sh"
       prefix.install "Notchify.app"
       bin.install_symlink "#{prefix}/Notchify.app/Contents/MacOS/notchify-cli" => "notchify"
