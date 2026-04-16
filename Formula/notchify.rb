@@ -2,10 +2,10 @@ class Notchify < Formula
   desc "Pixel mascot for Claude Code that lives in your MacBook notch"
   homepage "https://github.com/kikudjira/notchify"
   url "https://github.com/kikudjira/notchify/releases/download/v1.0.23/Notchify-v1.0.23.zip"
-  sha256 "3e3ca97df53e8443d39603088895db3785b91463ba4ddbf896cb0343b4e050f0"
+  sha256 "fb1068ddd251600ed5a31536a8cac667bf317ce7bbe278aa83ce26b2ea7b0436"
   version "1.0.23"
 
-  head "https://github.com/kikudjira/notchify.git", branch: "main"
+  head "https://github.com/kikudjira/notchify.git", branch: "beta"
 
   depends_on :macos => :monterey
   depends_on xcode: ["14.0", :build] if build.head?
@@ -17,9 +17,11 @@ class Notchify < Formula
     if build.head?
       ENV["SWIFT_BUILD_FLAGS"] = "--disable-sandbox"
       system "./scripts/build.sh"
+      rm_rf prefix/"Notchify.app"
       prefix.install "Notchify.app"
       bin.install_symlink "#{prefix}/Notchify.app/Contents/MacOS/notchify-cli" => "notchify"
     else
+      rm_rf prefix/"Notchify.app"
       prefix.install "Notchify.app"
       bin.install_symlink "#{prefix}/Notchify.app/Contents/MacOS/notchify-cli" => "notchify"
     end
